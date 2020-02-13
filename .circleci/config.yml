@@ -9,6 +9,10 @@ jobs:
       - run: cd be && npm install
       - run: cd be && npm run test
       - run: cd fe && npm install
+      - run: apt install xvfb
+      - run: Xvfb :99 &
+      - run: export DISPLAY=:99
       - run: cd fe && npm run test:unit
       - run: cd fe && npm run serve:ci&
       - run: cd fe && npm run test:ci
+      - run: pkill Xvfb
