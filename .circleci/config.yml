@@ -8,3 +8,6 @@ jobs:
       - checkout
       - run: cd fe && npm install
       - run: cd be && npm install
+      - run: cd fe && npm run test:unit
+      - run: cd fe && npm run test:ci
+      - run: cd be && npm run test
