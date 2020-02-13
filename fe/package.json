@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "serve:ci": "serve & wait-on http://localhost:4200",
+    "serve:ci": "npm run serve & wait-on http://localhost:4200",
     "test:ci": "cypress run",
     "lint": "vue-cli-service lint"
   },
