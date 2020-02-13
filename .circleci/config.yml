@@ -7,5 +7,4 @@ jobs:
     steps:
       - checkout
       - run: cd fe && npm install
-      - run: cd ../be && npm install
-      - run: npm run test
+      - run: cd be && npm install
