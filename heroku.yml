@@ -1,0 +1,15 @@
+setup:
+  addons:
+    - plan: heroku-postgresql
+      as: DATABASE
+build:
+  docker:
+    web: be/Dockerfile
+  config:
+    NODE_ENV: production
+release:
+  image: web
+  command:
+    - npx knex migrate:latest --env production
+run:
+  web: npm start

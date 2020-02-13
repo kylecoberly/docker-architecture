@@ -1,0 +1,14 @@
+version: "3"
+services:
+  fe:
+    ports:
+      - "4300:4300"
+    environment:
+      - "VUE_APP_API_URL=http://localhost:4301"
+      - "PORT=4300"
+  be:
+    ports:
+      - "4301:4301"
+    environment:
+      - "NODE_ENV=test"
+      - "PORT=4301"

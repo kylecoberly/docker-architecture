@@ -1,0 +1,13 @@
+version: "3"
+services:
+  fe:
+    ports:
+      - "4200:4200"
+    environment:
+      - "PORT=4200"
+  be:
+    ports:
+      - "4201:4201"
+    environment:
+      - "NODE_ENV=development"
+      - "PORT=4201"
