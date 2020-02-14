@@ -2,7 +2,8 @@
 
 describe("My First Test", () => {
   it("Visits the app root url", () => {
-    cy.visit("/");
+    // cy.visit("/");
+    cy.visit("http://localhost:80");
     cy.get("li").should("have.length", 4);
   });
 });
