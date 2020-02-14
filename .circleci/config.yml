@@ -8,26 +8,26 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-        name: Copy files over to temp containers
-        command: |
-          docker create -v /app --name dummy_fe alpine:3.4 /bin/true
-          docker cp /app/fe dummy_fe:/app
-          docker create -v /app --name dummy_be alpine:3.4 /bin/true
-          docker cp /app/be dummy_be:/app
+          name: Copy files over to temp containers
+          command: |
+            docker create -v /app --name dummy_fe alpine:3.4 /bin/true
+            docker cp /app/fe dummy_fe:/app
+            docker create -v /app --name dummy_be alpine:3.4 /bin/true
+            docker cp /app/be dummy_be:/app
       - run:
-        name: Start container and verify it is working
-        command: |
-          set -x
-          docker-compose up -d
+          name: Start container and verify it is working
+          command: |
+            set -x
+            docker-compose up -d
       - run:
-        name: Run backend unit tests
-        command: |
-          docker-compose exec be sh -c "cd be && npm test"
+          name: Run backend unit tests
+          command: |
+            docker-compose exec be sh -c "cd be && npm test"
       - run:
-        name: Run frontend unit tests
-        command: |
-          docker-compose exec be sh -c "cd fe && npm test:unit"
+          name: Run frontend unit tests
+          command: |
+            docker-compose exec be sh -c "cd fe && npm test:unit"
       - run:
-        name: Run frontend e2e tests
-        command: |
-          docker-compose exec be sh -c "cd fe && npm test:e2e"
+          name: Run frontend e2e tests
+          command: |
+            docker-compose exec be sh -c "cd fe && npm test:e2e"
