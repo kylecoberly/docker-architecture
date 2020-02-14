@@ -14,18 +14,15 @@ jobs:
       #     command: |
       #       docker-compose run be npm ci
       - run: sleep 60
-      - run:
-          name: Run backend unit tests
-          command: |
-            docker-compose run be sh -c "rm -rf node_modules && npm ci && npm test"
-      - run:
-          name: Run frontend unit tests
-          command: |
-            docker-compose run fe sh -c "rm -rf node_modules && npm ci && npm run test:unit"
+      # - run:
+      #     name: Run backend unit tests
+      #     command: |
+      #       docker-compose run be sh -c "rm -rf node_modules && npm ci && npm test"
+      # - run:
+      #     name: Run frontend unit tests
+      #     command: |
+      #       docker-compose run fe sh -c "rm -rf node_modules && npm ci && npm run test:unit"
       - run:
           name: Run frontend e2e tests
           command: |
-            docker-compose run fe sh -c "apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb"
-            docker-compose run fe sh -c "Xvfb :99 &"
-            docker-compose run fe sh -c "export DISPLAY=:99"
-            docker-compose run fe sh -c "rm -rf node_modules && npm ci && npm run test:ci"
+            docker-compose run cypress sh -c "cypress run"

@@ -7,10 +7,21 @@ services:
       - "VUE_APP_API_URL=http://localhost:8081"
       - "PORT=8080"
       - "CYPRESS_API_URL=http://localhost:8081"
-    # command: sh -c "npm i && npm build && npm start"
+    command: sh -c "npm i && npm build && npm start"
   be:
     ports:
       - "8081:8081"
     environment:
       - "NODE_ENV=ci"
       - "PORT=8081"
+  cypress:
+    image: cypress/included:3.2.0
+    depends_on:
+      - fe
+      - be
+    volumes:
+      - ./fe:/app
+    working_dir: /app
+    environment:
+      - "PORT=8080"
+      - "CYPRESS_API_URL=http://localhost:8081"
