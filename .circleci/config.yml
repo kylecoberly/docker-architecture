@@ -14,5 +14,5 @@ jobs:
       - run: export DISPLAY=:99
       - run: cd fe && npm install && npm i -g http-server
       - run: cd fe && npm run build && npm run test:unit
-      - run: cd fe/dist && PORT=3000 http-server & cd /app/fe && PORT=3000 npm run test:ci
+      - run: cd fe/dist && PORT=3000 http-server & PORT=3000 npm run test:ci
       - run: pkill Xvfb
