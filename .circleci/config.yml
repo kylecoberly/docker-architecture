@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:latest
-    working_directory: /app
+    working_directory: /home/ubuntu
     steps:
       - checkout
       - setup_remote_docker
