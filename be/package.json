@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "npx run jest"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
