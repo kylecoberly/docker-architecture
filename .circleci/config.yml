@@ -13,13 +13,12 @@ jobs:
       - run:
           name: Run backend unit tests
           command: |
-            docker-compose exec be sh -c "pwd && ls -la"
-            docker-compose exec be sh -c "npm i && npm test"
+            docker-compose run be sh -c "npm i && npm test"
       - run:
           name: Run frontend unit tests
           command: |
-            docker-compose exec be sh -c "npm test:unit"
+            docker-compose run fe sh -c "npm test:unit"
       - run:
           name: Run frontend e2e tests
           command: |
-            docker-compose exec be sh -c "npm test:e2e"
+            docker-compose run fe sh -c "npm test:e2e"
