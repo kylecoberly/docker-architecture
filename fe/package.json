@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "serve:ci": "npm run serve & wait-on http://localhost:3000",
-    "test:ci": "serve:ci && cypress run",
+    "test:ci": "npm run serve:ci && cypress run",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
