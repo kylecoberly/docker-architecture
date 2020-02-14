@@ -16,7 +16,7 @@ jobs:
       - run:
           name: Run backend unit tests
           command: |
-            docker-compose run be npm test
+            docker-compose run be sh -c "npm i && npm test"
       - run:
           name: Install FE dependencies
           command: |
