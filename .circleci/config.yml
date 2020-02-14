@@ -9,12 +9,12 @@ jobs:
           name: Start container and verify it is working
           command: |
             set -x
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
+            docker-compose -p ci -f docker-compose.yml -f docker-compose.ci.yml up -d
       - run:
           name: Run backend unit tests
           command: |
             docker-compose exec be sh -c "pwd && ls -la"
-            docker-compose exec be sh -c "npm test"
+            docker-compose exec be sh -c "npm i && npm test"
       - run:
           name: Run frontend unit tests
           command: |

@@ -12,5 +12,5 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - "NODE_ENV=test"
+      - "NODE_ENV=ci"
       - "PORT=8081"
