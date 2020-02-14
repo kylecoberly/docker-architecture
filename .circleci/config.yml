@@ -2,38 +2,32 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:latest
+      - image: circleci/buildpack-deps:18.04
     working_directory: /app
     steps:
+      - setup_remote_docker
       - checkout
       - run:
-          name: Install Docker Compose
-          command: |
-            set -x
-            curl -L https://github.com/docker/compose/releases/download/1.25.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-            chmod +x /usr/local/bin/docker-compose
+        name: Copy files over
+        command: |
+          docker create -v /app --name dummy_fe alpine:3.4 /bin/true
+          docker cp /app/fe dummy_fe:/app
+          docker create -v /app --name dummy_be alpine:3.4 /bin/true
+          docker cp /app/be dummy_be:/app
       - run:
-          name: Start container and verify it is working
-          command: |
-            set -x
-            docker-compose up -d
+        name: Start container and verify it is working
+        command: |
+          set -x
+          docker-compose up -d
       - run:
-          name: Run backend unit tests
-          command: |
-            cd be
-            npm install
-            npm test
+        name: Run backend unit tests
+        command: |
+          docker-compose exec be sh -c "cd be && npm test"
       - run:
-          name: Run frontend unit tests
-          command: |
-            cd fe
-            npm install
-            npm run test:unit
+        name: Run frontend unit tests
+        command: |
+          docker-compose exec be sh -c "cd fe && npm test:unit"
       - run:
-          name: Run frontend e2e tests
-          command: |
-            cd fe
-            apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-            Xvfb :99 &
-            export DISPLAY=:99
-            PORT=8080 npm run test:ci
+        name: Run frontend e2e tests
+        command: |
+          docker-compose exec be sh -c "cd fe && npm test:e2e"
