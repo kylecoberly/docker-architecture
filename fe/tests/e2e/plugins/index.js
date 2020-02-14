@@ -15,6 +15,7 @@ module.exports = (on, config) => {
   //  watchOptions: {}
   // }))
   config.baseUrl = `http://localhost:${process.env.PORT}`
+  console.log(config)
 
   return Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
