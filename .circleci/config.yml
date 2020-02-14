@@ -1,8 +1,7 @@
 version: 2
 jobs:
   build:
-    machine:
-      enabled: true
+    machine: true
     steps:
       - checkout
       - run:
@@ -17,8 +16,8 @@ jobs:
       - run:
           name: Run frontend unit tests
           command: |
-            docker-compose run fe sh -c "npm run test:unit"
+            docker-compose run fe sh -c "npm i && npm run test:unit"
       - run:
           name: Run frontend e2e tests
           command: |
-            docker-compose run fe sh -c "npm run test:e2e"
+            docker-compose run fe sh -c "npm i && npm run test:e2e"
