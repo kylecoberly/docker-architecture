@@ -1,29 +1,20 @@
 version: 2
 jobs:
   build:
-    docker:
+    machine:
       - image: circleci/node:latest
     steps:
       - checkout
-      - setup_remote_docker
-      - run:
-          name: Copy files over to temp containers
-          command: |
-            docker create -v /app --name dummy_fe node:latest /bin/true
-            docker cp fe dummy_fe:/app
-            docker create -v /app --name dummy_be node:latest /bin/true
-            docker cp be dummy_be:/app
       - run:
           name: Start container and verify it is working
           command: |
             set -x
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml -v dummy_be -v dummy_fe up -d
+            docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
       - run:
           name: Run backend unit tests
           command: |
             pwd
             ls -la
-            docker-compose ps
             docker-compose exec be sh -c "cd be && npm test"
       - run:
           name: Run frontend unit tests
