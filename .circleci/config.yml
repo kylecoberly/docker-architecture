@@ -13,6 +13,7 @@ jobs:
       #     name: Install BE dependencies
       #     command: |
       #       docker-compose run be npm ci
+      - run: sleep 60
       - run:
           name: Run backend unit tests
           command: |
