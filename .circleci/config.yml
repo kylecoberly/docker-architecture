@@ -10,9 +10,9 @@ jobs:
           name: Copy files over to temp containers
           command: |
             docker create -v /app --name dummy_fe node:latest /bin/true
-            docker cp /home/circleci/fe dummy_fe:/app
+            docker cp fe dummy_fe:/app
             docker create -v /app --name dummy_be node:latest /bin/true
-            docker cp /home/circleci/be dummy_be:/app
+            docker cp be dummy_be:/app
       - run:
           name: Start container and verify it is working
           command: |
