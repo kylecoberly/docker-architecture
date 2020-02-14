@@ -23,6 +23,7 @@ jobs:
           command: |
             pwd
             ls -la
+            docker-compose ps
             docker-compose exec be sh -c "cd be && npm test"
       - run:
           name: Run frontend unit tests
