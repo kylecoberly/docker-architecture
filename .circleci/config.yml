@@ -13,8 +13,6 @@ jobs:
       - run:
           name: Run backend unit tests
           command: |
-            pwd
-            ls -la
             docker-compose exec be sh -c "pwd && ls -la"
             docker-compose exec be sh -c "npm test"
       - run:
