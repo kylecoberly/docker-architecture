@@ -15,5 +15,5 @@ jobs:
       - run: cd fe && npm install && npm i -g http-server
       - run: cd fe && npm run build && npm run test:unit
       - run: cd fe/dist && PORT=80 http-server&
-      - run: cd fe && CYPRESS_PORT=80 CYPRESS_API_URL=http://localhost:81 npm run test:ci
+      - run: cd fe && CYPRESS_API_URL=http://localhost:81 npm run test:ci
       - run: pkill Xvfb

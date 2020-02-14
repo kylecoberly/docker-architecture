@@ -7,7 +7,6 @@ services:
       - "VUE_APP_API_URL=http://localhost:4301"
       - "PORT=4300"
       - "CYPRESS_API_URL=http://localhost:4301"
-      - "CYPRESS_PORT=4300"
   be:
     ports:
       - "4301:4301"
