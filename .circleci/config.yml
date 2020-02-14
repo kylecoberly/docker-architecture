@@ -6,12 +6,20 @@ jobs:
         working_directory: /app
     steps:
       - checkout
-      - run: cd be && npm install
-      - run: cd be && npm test
-      - run: cd be && PORT=81 npm start &
-      - run: apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-      - run: Xvfb :99 &
-      - run: export DISPLAY=:99
-      - run: cd fe && npm install && npm i -g http-server
-      - run: cd fe && npm run build && npm run test:unit
-      - run: cd fe/dist && PORT=3000 npm run test:ci
+      - run:
+          command: |
+            cd be
+            npm install
+            npm test
+            PORT=81 npm start &
+      - run:
+          command: |
+            cd fe
+            apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+            Xvfb :99 &
+            export DISPLAY=:99
+            npm install
+            npm run build
+            npm run test:unit
+            cd dist
+            PORT=3000 npm run test:ci
