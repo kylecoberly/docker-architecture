@@ -15,7 +15,7 @@ services:
       - "NODE_ENV=ci"
       - "PORT=8081"
   cypress:
-    image: cypress/included:3.2.0
+    image: cypress/base:8
     depends_on:
       - fe
       - be

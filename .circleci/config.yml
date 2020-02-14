@@ -25,4 +25,4 @@ jobs:
       - run:
           name: Run frontend e2e tests
           command: |
-            docker-compose run cypress sh -c "cypress run"
+            docker-compose run cypress sh -c "npx cypress run"
