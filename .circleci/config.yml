@@ -9,7 +9,7 @@ jobs:
       - run: cd be && npm install
       - run: cd be && npm run test
       - run: cd fe && npm install
-      - run: apt-get install libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      - run: apt update && apt-get install libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - run: Xvfb :99 &
       - run: export DISPLAY=:99
       - run: cd fe && npm run test:unit
