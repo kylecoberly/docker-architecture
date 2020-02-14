@@ -14,7 +14,7 @@ module.exports = (on, config) => {
   //  webpackOptions: require('@vue/cli-service/webpack.config'),
   //  watchOptions: {}
   // }))
-  config.baseUrl = `http://localhost:${cy.env("PORT")}`
+  config.baseUrl = `http://localhost:${process.env.PORT}`
 
   return Object.assign({}, config, {
     fixturesFolder: "tests/e2e/fixtures",
