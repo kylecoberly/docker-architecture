@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
-        name: Copy files over
+        name: Copy files over to temp containers
         command: |
           docker create -v /app --name dummy_fe alpine:3.4 /bin/true
           docker cp /app/fe dummy_fe:/app
