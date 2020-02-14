@@ -17,18 +17,18 @@ jobs:
           name: Start container and verify it is working
           command: |
             set -x
-            docker-compose up -d
+            docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
       - run:
           name: Run backend unit tests
           command: |
             pwd
             ls -la
-            docker-compose exec be sh -c "cd /app/be && npm test"
+            docker-compose exec be sh -c "cd be && npm test"
       - run:
           name: Run frontend unit tests
           command: |
-            docker-compose exec be sh -c "cd /app/fe && npm test:unit"
+            docker-compose exec be sh -c "cd fe && npm test:unit"
       - run:
           name: Run frontend e2e tests
           command: |
-            docker-compose exec be sh -c "cd /app/fe && npm test:e2e"
+            docker-compose exec be sh -c "cd fe && npm test:e2e"
