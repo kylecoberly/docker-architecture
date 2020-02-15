@@ -6,4 +6,4 @@ jobs:
       - checkout
       - run:
           name: Run tests
-          command: docker-compose -f docker-compose.ci.yml up -d cypress
+          command: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d cypress
