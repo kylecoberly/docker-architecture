@@ -1,11 +1,6 @@
 version: "3"
 services:
   fe:
-    build: ./fe
-    depends_on:
-      - be
-    volumes:
-      - ./fe:/app
     ports:
       - "8080:8080"
     environment:
@@ -14,23 +9,12 @@ services:
       - "CYPRESS_API_URL=http://be:8081"
     command: sh -c "npm ci && npm run serve"
   be:
-    build: ./be
-    volumes:
-      - ./be:/app
-    depends_on:
-      - db
     ports:
       - "8081:8081"
     environment:
       - "NODE_ENV=development"
       - "PORT=8081"
     command: sh -c "npm ci && npx knex migrate:latest && npx knex seed:run && npm run dev"
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_PASSWORD=password
-    expose:
-      - "5432"
   cypress:
     image: cypress/browsers:node12.13.0-chrome78-ff70-brave78
     volumes:
@@ -45,3 +29,4 @@ services:
       - "PORT=8080"
       - "CYPRESS_baseUrl=http://fe:8080"
       - "CYPRESS_API_URL=http://be:8081"
+    command: npx cypress run

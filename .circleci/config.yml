@@ -5,8 +5,5 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run container
-          command: docker-compose -f docker-compose.ci.yml up -d
-      - run:
           name: Run tests
-          command: docker-compose run cypress npx cypress run
+          command: docker-compose -f docker-compose.ci.yml up -d cypress
