@@ -6,9 +6,11 @@ services:
     environment:
       - "PORT=4200"
       - "CYPRESS_API_URL=http://localhost:4201"
+    command: sh -c "npm run serve"
   be:
     ports:
       - "4201:4201"
     environment:
       - "NODE_ENV=development"
       - "PORT=4201"
+    command: sh -c "npx migrate:latest && npx seed:run && npm run dev"

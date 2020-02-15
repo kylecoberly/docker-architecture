@@ -5,24 +5,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Start container
+          name: Run tests
           command: |
             set -x
-            docker-compose -p ci -f docker-compose.yml -f docker-compose.ci.yml up -d
-      # - run:
-      #     name: Install BE dependencies
-      #     command: |
-      #       docker-compose run be npm ci
-      - run: sleep 60
-      # - run:
-      #     name: Run backend unit tests
-      #     command: |
-      #       docker-compose run be sh -c "rm -rf node_modules && npm ci && npm test"
-      # - run:
-      #     name: Run frontend unit tests
-      #     command: |
-      #       docker-compose run fe sh -c "rm -rf node_modules && npm ci && npm run test:unit"
-      - run:
-          name: Run frontend e2e tests
-          command: |
-            docker-compose run cypress sh -c "npx cypress run"
+            docker-compose -p ci -f docker-compose.ci.yml up --build -d
+            docker-compose run cypress npx cypress run
