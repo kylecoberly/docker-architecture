@@ -4,13 +4,14 @@ services:
     ports:
       - "4200:4200"
     environment:
+      - "VUE_APP_API_URL=http://be:4300"
       - "PORT=4200"
-      - "CYPRESS_API_URL=http://localhost:4201"
+      - "CYPRESS_API_URL=http://be:4300"
     command: sh -c "npm run serve"
   be:
     ports:
-      - "4201:4201"
+      - "4300:4300"
     environment:
       - "NODE_ENV=development"
-      - "PORT=4201"
-    command: sh -c "npx migrate:latest && npx seed:run && npm run dev"
+      - "PORT=4300"
+    command: sh -c "npx knex migrate:latest && npx knex seed:run && npm run dev"
