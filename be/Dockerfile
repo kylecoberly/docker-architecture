@@ -1,5 +1,5 @@
 FROM node:12
 WORKDIR /app
 COPY . /app
-RUN npm ci
+RUN npm i
 CMD npm start

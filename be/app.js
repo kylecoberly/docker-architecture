@@ -10,7 +10,7 @@ app.use(morgan("tiny"))
 app.use(cors())
 app.use(bodyParser.json())
 
-const config = require("./knexfile")[process.env.NODE_ENV]
+const config = require("./knexfile")[process.env.NODE_ENV || "development"]
 const database = knex(config)
 
 app.get("/users", (request, response) => {

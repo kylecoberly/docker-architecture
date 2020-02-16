@@ -1,0 +1,19 @@
+{
+  "name": "cypress-testing-dependencies",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cypress": "^4.0.2",
+    "cypress-cucumber-preprocessor": "^2.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "tests/specs",
+    "commonPath": "common",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}

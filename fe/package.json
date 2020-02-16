@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.2.0",
-    "@vue/cli-plugin-e2e-cypress": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
     "@vue/cli-plugin-router": "^4.2.0",
     "@vue/cli-plugin-unit-jest": "^4.2.0",
@@ -32,7 +31,6 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "1.0.0-beta.31",
     "babel-eslint": "^10.0.3",
-    "cypress-cucumber-preprocessor": "^2.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
@@ -42,16 +40,5 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
     "wait-on": "^4.0.0"
-  },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "tests/e2e/specs",
-    "commonPath": "tests/e2e/common",
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "tests/e2e/cucumber-json",
-      "filePrefix": "",
-      "fileSuffix": ".cucumber"
-    }
   }
 }

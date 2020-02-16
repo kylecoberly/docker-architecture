@@ -1,33 +1,29 @@
 version: "3"
 services:
   fe:
-    ports:
-      - "8080:8080"
+    expose:
+      - "8080"
     environment:
       - "VUE_APP_API_URL=http://be:8081"
       - "PORT=8080"
       - "CYPRESS_API_URL=http://be:8081"
-    command: sh -c "npm run serve"
+    command: sh -c "npm run build && npx http-server dist"
   be:
-    ports:
-      - "8081:8081"
+    expose:
+      - "8081"
     environment:
-      - "NODE_ENV=development"
+      - "NODE_ENV=test"
       - "PORT=8081"
-    command: sh -c "npx knex migrate:latest && npx knex seed:run && npm run dev"
+    command: sh -c "npx knex migrate:latest && npx knex seed:run && npm start"
   cypress:
-    image: cypress/browsers:node12.13.0-chrome78-ff70-brave78
+    build: ./e2e
     volumes:
-      - ./fe/package.json:/e2e/package.json
-      - ./fe/cypress.json:/e2e/cypress.json
-      - ./fe/tests:/e2e/tests
+      - ./e2e/tests:/e2e/tests
     depends_on:
       - fe
       - be
       - db
-    working_dir: /e2e
     environment:
       - "PORT=8080"
       - "CYPRESS_baseUrl=http://fe:8080"
       - "CYPRESS_API_URL=http://be:8081"
-    command: npx cypress run
