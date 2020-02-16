@@ -6,6 +6,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
   DISPLAY=unix${DISPLAY}
 else
   # Mac
+  open -a XQuartz
   IP=$(ipconfig getifaddr en0)
   /usr/X11/bin/xhost + $IP
   DISPLAY=$IP:0
