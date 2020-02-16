@@ -5,17 +5,15 @@
   "scripts": {
     "start": "npx http-server dist/",
     "serve": "vue-cli-service serve",
-    "clean": "rm -rf node_modules package-lock.json dist",
+    "clean": "rm -rf node_modules dist",
     "build": "vue-cli-service build",
+    "test": "npm run lint && vue-cli-service test:unit && npx cypress run",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "serve:ci": "npm run serve & wait-on http://localhost:3000",
-    "test:ci": "npm run serve:ci & cypress run",
     "lint": "vue-cli-service lint --fix",
     "pretest": "npm install",
     "preversion": "npm test",
-    "version": "",
-    "postversion": "git push"
+    "version": ""
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -47,9 +45,11 @@
   },
   "cypress-cucumber-preprocessor": {
     "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "tests/e2e/specs",
+    "commonPath": "tests/e2e/common",
     "cucumberJson": {
       "generate": true,
-      "outputFolder": "cypress/cucumber-json",
+      "outputFolder": "tests/e2e/cucumber-json",
       "filePrefix": "",
       "fileSuffix": ".cucumber"
     }
