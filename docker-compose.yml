@@ -6,12 +6,14 @@ services:
       - be
     volumes:
       - ./fe:/app
+      - /app/node_modules/
   be:
     build: ./be
     volumes:
       - ./be:/app
     depends_on:
       - db
+      - /app/node_modules/
   db:
     image: postgres
     environment:
