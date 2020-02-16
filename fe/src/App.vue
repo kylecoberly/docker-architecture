@@ -26,22 +26,23 @@ export default {
       });
   },
   methods: {
-    addUser(event){
-      const formData = new FormData(event.target)
+    addUser(event) {
+      const formData = new FormData(event.target);
       fetch(`${process.env.VUE_APP_API_URL}/users`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           name: formData.get("name")
         })
-      }).then(response => response.json())
-      .then(({ user }) => {
-        this.users = [...this.users, user];
-      });
+      })
+        .then(response => response.json())
+        .then(({ user }) => {
+          this.users = [...this.users, user];
+        });
     }
-  },
+  }
 };
 </script>
 

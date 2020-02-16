@@ -1,6 +1,6 @@
 {
   "name": "fe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "start": "npx http-server dist/",
@@ -11,7 +11,11 @@
     "test:e2e": "vue-cli-service test:e2e",
     "serve:ci": "npm run serve & wait-on http://localhost:3000",
     "test:ci": "npm run serve:ci & cypress run",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --fix",
+    "pretest": "npm install",
+    "preversion": "npm test",
+    "version": "",
+    "postversion": "git push"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -30,6 +34,7 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/test-utils": "1.0.0-beta.31",
     "babel-eslint": "^10.0.3",
+    "cypress-cucumber-preprocessor": "^2.0.1",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
@@ -39,5 +44,14 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
     "wait-on": "^4.0.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
