@@ -1,0 +1,13 @@
+version: "3"
+services:
+  fe:
+    command: npm run serve
+  be:
+    command: sh -c "npx knex migrate:latest && npx knex seed:run && npm run dev"
+  cypress:
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    tty: true
+    environment:
+      - DISPLAY
+    command: npx cypress open

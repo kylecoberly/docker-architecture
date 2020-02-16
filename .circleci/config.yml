@@ -6,18 +6,5 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Start container
-          command: |
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
-      - run:
-          name: Run BE Unit tests
-          command: |
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run be npm run test
-      - run:
-          name: Run FE Unit tests
-          command: |
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run fe npm run test:unit
-      - run:
-          name: Run E2E tests
-          command: |
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run cypress
+          name: Run tests
+          command: scripts/ci

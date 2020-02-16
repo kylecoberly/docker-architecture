@@ -7,27 +7,21 @@ services:
       - "VUE_APP_API_URL=http://be:8081"
       - "PORT=8080"
       - "CYPRESS_API_URL=http://be:8081"
-    command: npm run serve
   be:
     expose:
       - "8081"
     environment:
       - "NODE_ENV=test"
       - "PORT=8081"
-    command: sh -c "npx knex migrate:latest && npx knex seed:run && npm run dev"
   cypress:
     build: ./e2e
     volumes:
       - ./e2e/tests:/e2e/tests
-      - /tmp/.X11-unix:/tmp/.X11-unix
     depends_on:
       - fe
       - be
       - db
-    tty: true
     environment:
       - "PORT=8080"
       - "CYPRESS_baseUrl=http://fe:8080"
       - "CYPRESS_API_URL=http://be:8081"
-      - DISPLAY
-    command: npx cypress open
