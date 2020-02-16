@@ -8,12 +8,12 @@ jobs:
           name: Run BE Unit tests
           command: |
             docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run be npm run test
+            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run be sh -c "npm ci && npm run test"
       - run:
           name: Run FE Unit tests
           command: |
             docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
-            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run fe npm run test:unit
+            docker-compose -f docker-compose.yml -f docker-compose.ci.yml run fe sh -c "npm ci && npm run test:unit"
       - run:
           name: Run E2E tests
           command: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d cypress
