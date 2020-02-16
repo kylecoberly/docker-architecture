@@ -11,9 +11,9 @@ services:
     build: ./be
     volumes:
       - ./be:/app
+      - /app/node_modules/
     depends_on:
       - db
-      - /app/node_modules/
   db:
     image: postgres
     environment:
