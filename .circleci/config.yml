@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   heroku: circleci/heroku@1.0.1
 jobs:
-  build:
+  test:
     machine:
       enabled: true
     steps:
@@ -20,12 +20,12 @@ jobs:
 
 workflows:
   version: 2.1
-  build-and-deploy:
+  test-and-deploy:
     jobs:
-      - build
+      - test
       - deploy:
           requires:
-            - build
+            - test
           filters:
             branches:
               only: master
