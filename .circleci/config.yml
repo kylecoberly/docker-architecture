@@ -10,22 +10,41 @@ jobs:
       - run:
           name: Run tests
           command: scripts/ci
-  deploy:
+  deploy_backend:
     machine:
       enabled: true
     steps:
       - checkout
       - heroku/install
       - heroku/deploy-via-git
+  deploy_frontend:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+        name: Front-end build
+        command: |
+          cd fe
+          npm i
+          npm run build
+          npx firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
   version: 2.1
   test-and-deploy:
     jobs:
       - test
-      - deploy:
+      - deploy_backend:
           requires:
             - test
+          filters:
+            branches:
+              only: master
+      - deploy_frontend:
+          requires:
+            - test
+            - deploy_backend
           filters:
             branches:
               only: master
