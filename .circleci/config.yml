@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  heroku: circleci/heroku@1.0.1
 jobs:
   build:
     machine:
@@ -8,3 +10,19 @@ jobs:
       - run:
           name: Run tests
           command: scripts/ci
+  deploy:
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-from-git
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
