@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-from-git
+      - heroku/deploy-via-git
 
 workflows:
   version: 2.1
