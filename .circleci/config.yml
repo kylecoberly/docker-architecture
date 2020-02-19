@@ -23,12 +23,12 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Front-end build
-        command: |
-          cd fe
-          npm i
-          npm run build
-          npx firebase deploy --token "$FIREBASE_TOKEN"
+          name: Front-end build
+          command: |
+            cd fe
+            npm i
+            npm run build
+            npx firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
   version: 2.1
