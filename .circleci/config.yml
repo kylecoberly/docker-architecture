@@ -26,9 +26,7 @@ jobs:
       - run:
           name: Front-end build
           command: |
-            scripts/build_fe
-            cd fe
-            npx firebase deploy --token "$FIREBASE_TOKEN"
+            scripts/build_and_deploy_fe
 
 workflows:
   version: 2.1
