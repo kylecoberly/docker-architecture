@@ -25,9 +25,8 @@ jobs:
       - run:
           name: Front-end build
           command: |
+            scripts/ci
             cd fe
-            npm i
-            npm run build
             npx firebase deploy --token "$FIREBASE_TOKEN"
 
 workflows:
