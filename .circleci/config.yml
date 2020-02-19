@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Run tests
+          name: Run unit and e2e tests
           command: scripts/ci
   deploy_backend:
     machine:
