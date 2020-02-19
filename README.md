@@ -8,7 +8,6 @@ An app example/scaffold with lots of quality tools
 
 ## Todo
 
-* Build & deploy frontend
 * Build & deploy cucumber docs
 * Build & deploy test coverage information
 * Templating

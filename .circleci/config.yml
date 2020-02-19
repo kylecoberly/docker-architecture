@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Front-end build
           command: |
-            scripts/ci
+            scripts/build_fe
             cd fe
             npx firebase deploy --token "$FIREBASE_TOKEN"
 
