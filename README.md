@@ -9,6 +9,7 @@ An app example/scaffold with lots of quality tools
 ## Todo
 
 * Build & deploy cucumber docs
+* Swagger integration
 * Build & deploy test coverage information
 * Templating
 * Global versioning

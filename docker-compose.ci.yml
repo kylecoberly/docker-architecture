@@ -5,4 +5,4 @@ services:
   be:
     command: sh -c "npx knex migrate:latest && npx knex seed:run && npm start"
   cypress:
-    command: npx cypress run
+    command: sh -c "npx cypress run --browser chrome && npx cypress run --browser firefox"
