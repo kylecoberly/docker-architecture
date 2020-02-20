@@ -2,7 +2,9 @@
   "name": "cypress-testing-dependencies",
   "version": "1.0.0",
   "devDependencies": {
+    "axe-core": "^3.5.1",
     "cypress": "^4.0.2",
+    "cypress-axe": "^0.5.3",
     "cypress-cucumber-preprocessor": "^2.0.1"
   },
   "cypress-cucumber-preprocessor": {

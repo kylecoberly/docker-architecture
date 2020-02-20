@@ -13,5 +13,4 @@ An app example/scaffold with lots of quality tools
 * Templating
 * Global versioning
 * 1-button version management
-* Accessibility
 * Perf

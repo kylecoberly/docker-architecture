@@ -12,4 +12,4 @@ else
   DISPLAY=$IP:0
 fi
 
-docker-compose -p test -f docker-compose.yml -f docker-compose.test.yml -f docker-compose.e2e.yml up -d
+docker-compose -p test -f docker-compose.yml -f docker-compose.test.yml -f docker-compose.e2e.yml up --exit-code-from cypress

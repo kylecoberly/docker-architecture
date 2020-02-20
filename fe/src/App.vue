@@ -1,14 +1,15 @@
 <template>
-  <div id="app">
+  <main id="app">
     <h1>Users</h1>
     <ul>
       <li v-for="user in users" :key="user.id">{{ user.name }}</li>
     </ul>
     <form @submit.prevent="addUser">
-      <input type="text" name="name" />
-      <input type="submit" value="Add" />
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Name" />
+      <input id="submit" type="submit" value="Add" />
     </form>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -46,4 +47,15 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+</style>
