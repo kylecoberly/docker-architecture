@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose run fe sh -c "npm run build && npx firebase deploy --token ${FIREBASE_TOKEN}"
+docker-compose run fe sh -c "npm run build && npx firebase deploy --token $FIREBASE_TOKEN"

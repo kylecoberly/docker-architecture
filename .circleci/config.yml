@@ -27,6 +27,8 @@ jobs:
           name: Front-end build
           command: |
             scripts/build_and_deploy_fe
+          environment:
+            FIREBASE_TOKEN: ${FIREBASE_TOKEN}
 
 workflows:
   version: 2.1
