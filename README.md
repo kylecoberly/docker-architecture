@@ -8,6 +8,7 @@ An app example/scaffold with lots of quality tools
 
 ## Todo
 
+* Pipeline promotions
 * Build & deploy cucumber docs
 * Swagger integration
 * Build & deploy test coverage information
