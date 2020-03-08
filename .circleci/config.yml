@@ -5,14 +5,18 @@ jobs:
   test:
     machine:
       enabled: true
+      docker_layer_caching: true
     steps:
       - checkout
       - run:
           name: Run unit and e2e tests
           command: scripts/ci
+      - store_artifacts:
+          path: e2e/tests/cucumber-json/test.cucumber.json
   deploy_backend:
     machine:
       enabled: true
+      docker_layer_caching: true
     steps:
       - checkout
       - heroku/install
@@ -21,9 +25,10 @@ jobs:
   deploy_frontend:
     machine:
       enabled: true
+      docker_layer_caching: true
     steps:
       - checkout
-      - run:
+      - deploy:
           name: Front-end build
           command: |
             scripts/build_and_deploy_fe
