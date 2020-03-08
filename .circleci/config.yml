@@ -5,7 +5,6 @@ jobs:
   test:
     machine:
       enabled: true
-      docker_layer_caching: true
     steps:
       - checkout
       - run:
@@ -16,7 +15,6 @@ jobs:
   deploy_backend:
     machine:
       enabled: true
-      docker_layer_caching: true
     steps:
       - checkout
       - heroku/install
@@ -25,7 +23,6 @@ jobs:
   deploy_frontend:
     machine:
       enabled: true
-      docker_layer_caching: true
     steps:
       - checkout
       - deploy:
