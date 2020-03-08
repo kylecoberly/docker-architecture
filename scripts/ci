@@ -1,4 +1,2 @@
 #!/bin/bash
 docker-compose -p ci -f docker-compose.yml -f docker-compose.test.yml -f docker-compose.ci.yml up --build --exit-code-from cypress
-docker-compose -f docker-compose.yml -f docker-compose.test.yml -f docker-compose.ci.yml run be npm run test
-docker-compose -f docker-compose.yml -f docker-compose.test.yml -f docker-compose.ci.yml run fe npm run test

@@ -1,5 +1,6 @@
-FROM node:12
+FROM node:12.13.0
 WORKDIR /app
-COPY . /app
+COPY package*.json ./
 RUN npm i
-CMD npm start
+COPY . .
+RUN npm run build

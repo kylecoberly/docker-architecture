@@ -18,7 +18,7 @@ app.get("/users", (request, response) => {
     .then(users => {
       response.json({ users })
     }).catch( error => {
-      response.json({ error: error.message })
+      response.status(500).json({ error: error.message })
     })
 })
 app.post("/users", (request, response) => {
@@ -29,8 +29,8 @@ app.post("/users", (request, response) => {
     .then(user => {
       response.json({ user })
     }).catch( error => {
-      response.json({ error: error.message })
+      response.status(500).json({ error: error.message })
     })
 })
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, () => console.log(`Listening on port ${process.env.PORT}`))

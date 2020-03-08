@@ -1,8 +1,12 @@
 version: "3"
 services:
   fe:
+    volumes:
+      - ./fe:/app
     command: npm run serve
   be:
+    volumes:
+      - ./be:/app
     command: sh -c "npx knex migrate:latest && npx knex seed:run && npm run dev"
   cypress:
     volumes:

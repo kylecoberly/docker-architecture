@@ -1,16 +1,25 @@
 version: "3"
 services:
   fe:
+    build:
+      context: ./fe
+      dockerfile: Dockerfile.dev
     ports:
       - "4200:4200"
+    volumes:
+      - ./fe:/app
     environment:
       - "VUE_APP_API_URL=http://localhost:4201"
       - "PORT=4200"
-      - "CYPRESS_API_URL=http://localhost:4201"
     command: npm run serve
   be:
+    build:
+      context: ./be
+      dockerfile: Dockerfile.dev
     ports:
       - "4201:4201"
+    volumes:
+      - ./be:/app
     environment:
       - "NODE_ENV=development"
       - "PORT=4201"
