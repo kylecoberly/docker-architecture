@@ -7,6 +7,7 @@ jobs:
       enabled: true
     steps:
       - checkout
+      - store_test_results
       - run:
           name: Run unit and e2e tests
           command: scripts/ci
